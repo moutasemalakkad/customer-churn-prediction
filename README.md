@@ -1,7 +1,6 @@
 # Predict Customer Churn
 
-- Project **Predict Customer Churn** of ML DevOps Engineer Nanodegree Udacity
-
+- Project **Predict Customer Churn**.
 ## Project Description
 This project contains an alogirthm to detect the csutomer that are likely to churn based on their credit card user information.
 
