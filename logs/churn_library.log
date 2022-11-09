@@ -1,0 +1,12 @@
+INFO:root:TEST LOG: build df
+INFO:root:SUCCESS: built df
+INFO:root:ERROR: Encoded dataframe fixture creation: Not existent column to encode
+ERROR:root:ERROR: Encoded dataframe fixture creation: Not existent column to encode
+INFO:root:SUCCESS: Testing import_data
+INFO:root:SUCCESS:Testing perform_eda
+INFO:root:SUCCESS:Testing perform_eda
+INFO:root:SUCCESS:Testing perform_eda
+INFO:root:SUCCESS:Testing perform_eda
+INFO:root:SUCCESS:Testing perform_eda
+INFO:root:Encoded dataframe fixture creation: SUCCESS
+INFO:root:PASSED: test_encoder_helper_test
