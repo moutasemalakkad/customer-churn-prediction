@@ -35,11 +35,11 @@ def df_raw():
         raise FileNotFoundError
     return df
     
-
 @pytest.fixture(scope="module")
-def encode_df(df_raw):
+def df_encoded(df_raw):
     """
-    encoded dataframe fixture - returns the encoded dataframe on some specific column
+    func: encoded dataframe fixture 
+    returns: encoded dataframe
     """
     lis= ["Gender", "Education_Level", "Marital_Status", "Income_Category", "Card_Category"]
     try:
@@ -52,19 +52,6 @@ def encode_df(df_raw):
 
     return encoded_df
 
-def test_perform_feature_engineering(df_encoded):
-    """
-    func: test the perform_feature_engineering from churn_library.py
-    """
-    try:
-        X_train, X_test, y_train, y_test = perform_feature_engineering(df_encoded)
-        assert len(X_train) == len(y_train)
-        assert len(X_test) == len(y_test)
-        logging.info("SUCCESS: Testing perform_feature_engineering") 
-    except BaseException:
-        logging.error("ERROR: Testing perform_feature_engineering")
-        logging.info("ERROR: Testing perform_feature_engineering")
-        raise BaseException
 
 def test_import():
     '''
@@ -100,13 +87,26 @@ def test_eda(df_raw):
             logging.error("ERROR: Testing perform_eda: generated images missing")
             raise err
 
+def test_perform_feature_engineering(df_encoded):
+    """
+    func: test the perform_feature_engineering from churn_library.py
+    """
+    try:
+        X_train, X_test, y_train, y_test = perform_feature_engineering(df_encoded, 'Churn')
+        assert len(X_train) == len(y_train)
+        assert len(X_test) == len(y_test)
+        logging.info("SUCCESS: Testing perform_feature_engineering") 
+    except BaseException:
+        logging.error("ERROR: Testing perform_feature_engineering")
+        logging.info("ERROR: Testing perform_feature_engineering")
+        raise BaseException
 
-def test_encoder_helper(encode_df):
+def test_encoder_helper(df_encoded):
     '''
     func: test encoder helper from churn_library.py
     returns: n/a
     '''
-    df_encoded = encode_df
+    df_encoded = df_encoded
     
     try:
         for column in ["Gender_Churn",
@@ -114,7 +114,7 @@ def test_encoder_helper(encode_df):
                        "Marital_Status_Churn",
                        "Income_Category_Churn",
                        "Card_Category_Churn"]:
-            assert isinstance(encode_df[column].iloc[0], float)
+            assert isinstance(df_encoded[column].iloc[0], float)
         logging.info("PASSED: test_encoder_helper_test")
     except AssertionError:
         logging.error(
