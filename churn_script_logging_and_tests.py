@@ -146,18 +146,20 @@ def test_train_models(test_perform_feature_engineering):
     '''
     test train_models
     '''
+
     try:
         train_models(
             test_perform_feature_engineering[0],
             test_perform_feature_engineering[1],
             test_perform_feature_engineering[2],
             test_perform_feature_engineering[3])
+
         joblib.load("models/rfc_model.pkl")
         joblib.load("models/logistic_model.pkl")
         logging.info("PASSED: Testing testing_models")
-    except FileNotFoundError as err:
-        logging.error("Testing train_models: The files waeren't found")
-        raise err
+
+    except ValueError:
+        raise ValueError
 
 
 if __name__ == "__main__":
