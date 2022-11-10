@@ -5,11 +5,11 @@ Author: Moutasem Akkad
 Date: 11/09/2022
 '''
 
-import os
+
 import logging
-import churn_library as cls
 
 import pytest
+import joblib
 
 from churn_library import import_data, perform_eda, encoder_helper, \
     perform_feature_engineering, train_models
@@ -101,6 +101,7 @@ def test_eda(df_raw):
                 "ERROR: Testing perform_eda: generated images missing")
             raise err
 
+
 @pytest.fixture(scope="module")
 def test_perform_feature_engineering(df_encoded):
     """
@@ -116,7 +117,7 @@ def test_perform_feature_engineering(df_encoded):
         logging.error("ERROR: Testing perform_feature_engineering")
         logging.info("ERROR: Testing perform_feature_engineering")
         raise BaseException
-    
+
     return X_train, X_test, y_train, y_test
 
 
@@ -146,7 +147,11 @@ def test_train_models(test_perform_feature_engineering):
     test train_models
     '''
     try:
-        train_models(test_perform_feature_engineering[0], test_perform_feature_engineering[1], test_perform_feature_engineering[2], test_perform_feature_engineering[3])
+        train_models(
+            test_perform_feature_engineering[0],
+            test_perform_feature_engineering[1],
+            test_perform_feature_engineering[2],
+            test_perform_feature_engineering[3])
         joblib.load("models/rfc_model.pkl")
         joblib.load("models/logistic_model.pkl")
         logging.info("PASSED: Testing testing_models")

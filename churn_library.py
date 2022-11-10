@@ -244,13 +244,13 @@ def train_models(X_train, X_test, y_train, y_test):
     # save best model
     joblib.dump(cv_rfc.best_estimator_, './models/rfc_model.pkl')
     joblib.dump(lrc, './models/logistic_model.pkl')
-    
-        # store ROC curves plot
+
+    # store ROC curves plot
     lrc_plot = plot_roc(lrc, X_test, y_test)
     plt.figure(figsize=(15, 8))
     axis = plt.gca()
     _ = plot_roc(cv_rfc.best_estimator_,
-                       X_test, y_test, ax=axis, alpha=0.8)
+                 X_test, y_test, ax=axis, alpha=0.8)
     lrc_plot.plot(ax=axis, alpha=0.8)
     plt.savefig("images/results/Roc_Curves.jpg")
     plt.close()
