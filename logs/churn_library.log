@@ -1,12 +1,4 @@
-INFO:root:TEST LOG: build df
-INFO:root:SUCCESS: built df
-INFO:root:ERROR: Encoded dataframe fixture creation: Not existent column to encode
-ERROR:root:ERROR: Encoded dataframe fixture creation: Not existent column to encode
-INFO:root:SUCCESS: Testing import_data
-INFO:root:SUCCESS:Testing perform_eda
-INFO:root:SUCCESS:Testing perform_eda
-INFO:root:SUCCESS:Testing perform_eda
-INFO:root:SUCCESS:Testing perform_eda
-INFO:root:SUCCESS:Testing perform_eda
-INFO:root:Encoded dataframe fixture creation: SUCCESS
-INFO:root:PASSED: test_encoder_helper_test
+INFO:root:SUCCESS: read dataframe.
+INFO:root:SUCCESS: saved EDA plots to the images folder.
+INFO:root:SUCCESS: Encoded categorial columns and dropped the string columns.
+INFO:root:SUCCESS: splitted data intro train and test
