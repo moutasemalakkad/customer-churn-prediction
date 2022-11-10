@@ -121,13 +121,6 @@ def test_encoder_helper(df_encoded):
             "FAILED: econder_helper_test")
         raise 
 
-
-# def test_perform_feature_engineering(perform_feature_engineering):
-#     '''
-#     test perform_feature_engineering
-#     '''
-
-
 # def test_train_models(train_models):
 #     '''
 #     test train_models
