@@ -35,27 +35,6 @@ def df_raw():
         raise FileNotFoundError
     return df
     
-@pytest.fixture(scope="module")
-def df_encoded(df_raw):
-    """
-    func: encoded dataframe fixture 
-    returns: encoded dataframe
-    """
-    try:
-        df_encoded = encoder_helper(df_raw,
-                                    category_lst=["Gender",
-                                                  "Education_Level",
-                                                  "Marital_Status",
-                                                  "Income_Category",
-                                                  "Card_Category"], response="Churn")
-        logging.info("SUCCESS: Encoded dataframe fixture creation")
-    except KeyError as err:
-        logging.info("ERROR: Encoded dataframe fixture creation: Not existent column to encode")
-        logging.error(
-            "ERROR: Encoded dataframe fixture creation: Not existent column to encode")
-        raise err
-
-    return df_encoded
 
 @pytest.fixture(scope="module")
 def encode_df(df_raw):
